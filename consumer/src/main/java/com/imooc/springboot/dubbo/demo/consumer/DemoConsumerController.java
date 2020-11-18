@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/dubbo")
 public class DemoConsumerController {
 
     @Reference(lazy=true)
     private DemoService demoService;
 
-    @RequestMapping("/sayHello")
-    public String sayHello(@RequestParam(name="name", value="dubbo") String name) { return demoService.sayHello(name);
+    @RequestMapping("/home")
+    public String sayHello(@RequestParam(name="name", defaultValue="dubbo") String name) { return demoService.sayHello(name);
     }
 
 }
